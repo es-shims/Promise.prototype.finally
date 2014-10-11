@@ -1,5 +1,7 @@
 # Promise.prototype.finally [ ![Codeship Status for matthew-andrews/Promise.prototype.finally](https://codeship.io/projects/d2ed45d0-3364-0132-3c6b-26237c03a86a/status)](https://codeship.io/projects/40589)
 
+A polyfill for `Promise.prototype.finally`.  See docs on what finally is on [your favourite pre-ES6 promise library](https://github.com/kriskowal/q/wiki/API-Reference#promisefinallycallback).
+
 Warning: This micro-library doesn't force you to use any particular Promise implementation by using whatever `Promise` has been defined as globally.  This is so that you may use any ES6 standard Promise compliant library - or, of course, native ES6 Promises.
 
 If you're running the code on a browser or node version that doesn't include native promises you will need to include a polyfill. The following polyfills are tested as part of this module's test suite:-
