@@ -1,5 +1,5 @@
 {
-  "name": "Promise.prototype.finally",
+  "name": "promise.prototype.finally",
   "description": "A polyfill for Promise.prototype.finally for ES6 compliant promises",
   "version": "1.0.0",
   "scripts": {

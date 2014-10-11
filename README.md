@@ -11,14 +11,14 @@ If you're running the code on a browser or node version that doesn't include nat
 ## Installation
 
 ```
-npm install Promise.prototype.finally --save
+npm install promise.prototype.finally --save
 ```
 
 ## Examples
 
 ```js
 require('es6-promise').polyfill();
-require('Promise.prototype.finally');
+require('promise.prototype.finally');
 
 Promise.resolve(6)
 	.finally(function() {
