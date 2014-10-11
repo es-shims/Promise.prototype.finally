@@ -3,6 +3,20 @@ var assert = require('assert');
 require('es6-promise').polyfill();
 require('../finally');
 
+var o_create = Object.create || function(o, props) {
+	function F() {}
+	F.prototype = o;
+
+	if (typeof(props) === "object") {
+		for (var prop in props) {
+			if (props.hasOwnProperty((prop))) {
+				F[prop] = props[prop];
+			}
+		}
+	}
+	return new F();
+};
+
 describe("Promise.finally", function() {
 	describe("native finally behaviour", function() {
 		describe("no value is passed in", function() {
@@ -103,6 +117,42 @@ describe("Promise.finally", function() {
 						assert.deepEqual(expectedReason, reason);
 						done();
 					});
+				});
+			});
+
+			describe("inheritance", function() {
+				function Subclass (resolver) {
+					this._promise$constructor(resolver);
+				}
+
+				Subclass.prototype = o_create(Promise.prototype);
+				Subclass.prototype.constructor = Subclass;
+				Subclass.prototype._promise$constructor = Promise;
+
+				Subclass.resolve = Promise.resolve;
+				Subclass.reject = Promise.reject;
+				Subclass.all = Promise.all;
+
+				it("preserves correct subclass when chained", function() {
+					var promise = Subclass.resolve().finally();
+					assert.ok(promise instanceof Subclass);
+					assert.equal(promise.constructor, Subclass);
+				});
+
+				it("preserves correct subclass when rejected", function() {
+					var promise = Subclass.resolve().finally(function() {
+						throw new Error("OMG");
+					});
+					assert.ok(promise instanceof Subclass);
+					assert.equal(promise.constructor, Subclass);
+				});
+
+				it("preserves correct subclass when someone returns a thenable", function() {
+					var promise = Subclass.resolve().finally(function() {
+						return Promise.resolve(1);
+					});
+					assert.ok(promise instanceof Subclass);
+					assert.equal(promise.constructor, Subclass);
 				});
 			});
 		});
