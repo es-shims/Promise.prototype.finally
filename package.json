@@ -1,0 +1,21 @@
+{
+  "name": "Promise.prototype.finally",
+  "description": "A polyfill for Promise.prototype.finally for ES6 compliant promises",
+  "scripts": {
+    "test": "npm run lintspaces && npm run jshint && ./node_modules/.bin/mocha test",
+    "files": "find . \\( -name '*.js' -o -name '*.json' \\) ! -path './node_modules/*'",
+    "lintspaces": "./node_modules/.bin/lintspaces -i js-comments -e .editorconfig `npm run -s files`",
+    "jshint": "./node_modules/.bin/jshint `npm run -s files`"
+  },
+  "main": "finally.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matthew-andrews/Promise.prototype.finally"
+  },
+  "devDependencies": {
+    "es6-promise": "^1.0.0",
+    "jshint": "^2.5.6",
+    "lintspaces-cli": "0.0.4",
+    "mocha": "^1.21.4"
+  }
+}
