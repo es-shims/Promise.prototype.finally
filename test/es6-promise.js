@@ -57,7 +57,7 @@ describe("Promise.finally", function() {
 			describe("fulfilled promise", function(){
 				it("propagates changes via throw", function(done) {
 					var promise = Promise.resolve(1);
-					var expectedReason	= new Error();
+					var expectedReason = new Error();
 
 					promise['finally'](function() {
 						throw expectedReason;
@@ -69,7 +69,7 @@ describe("Promise.finally", function() {
 
 				it("propagates changes via returned rejected promise", function(done){
 					var promise = Promise.resolve(1);
-					var expectedReason	= new Error();
+					var expectedReason = new Error();
 
 					promise['finally'](function() {
 						return Promise.reject(expectedReason);
@@ -83,7 +83,7 @@ describe("Promise.finally", function() {
 			describe("rejected promise", function(){
 				it("propagates changes via throw", function(done) {
 					var promise = Promise.reject(1);
-					var expectedReason	= new Error();
+					var expectedReason = new Error();
 
 					promise['finally'](function() {
 						throw expectedReason;
@@ -95,7 +95,7 @@ describe("Promise.finally", function() {
 
 				it("propagates changes via returned rejected promise", function(done){
 					var promise = Promise.reject(1);
-					var expectedReason	= new Error();
+					var expectedReason = new Error();
 
 					promise['finally'](function() {
 						return Promise.reject(expectedReason);
