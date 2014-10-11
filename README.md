@@ -9,7 +9,7 @@ If you're running the code on a browser or node version that doesn't include nat
 ## Installation
 
 ```
-npm install --save Promise.prototype.finally
+npm install Promise.prototype.finally --save
 ```
 
 ## Examples
