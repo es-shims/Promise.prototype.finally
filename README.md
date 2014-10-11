@@ -33,4 +33,4 @@ Promise.reject(6)
 
 ## Credits and collaboration
 
-The lead developer of **Promise.prototype.finally** is [Matt Andrews](http://twitter.com/andrewsmatt) at FT with unwitting help and support from [Stefan Penner](https://twitter.com/stefanpenner). All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.
+The lead developer of **Promise.prototype.finally** is [Matt Andrews](http://twitter.com/andrewsmatt) at FT, the code based on a snippet by [Stefan Penner](https://twitter.com/stefanpenner) - used [with permission](https://twitter.com/stefanpenner/status/520904347073667072). All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.
