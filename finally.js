@@ -12,12 +12,9 @@
 	else if (typeof window !== 'undefined' && window.document) local = window;
 	else local = self;
 
-	// Polyfill (verb)
-	var finallySupport = "finally" in local.Promise.prototype;
-	if (!finallySupport) local.Promise.prototype['finally'] = finallyPolyfill;
-
-	// Polyfill (noun)
-	function finallyPolyfill(callback) {
+	// It's replaced unconditionally to preserve the expected behavior
+	// in programs even if there's ever a native finally.
+	local.Promise.prototype['finally'] = function finallyPolyfill(callback) {
 		var constructor = this.constructor;
 
 		return this.then(function(value) {
@@ -29,5 +26,5 @@
 					throw reason;
 				});
 			});
-	}
+	};
 }());
