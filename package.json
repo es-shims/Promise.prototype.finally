@@ -18,7 +18,13 @@
 	"main": "index.js",
 	"scripts": {
 		"pretest": "npm run --silent lint",
+		"test": "npm run --silent tests-only",
 		"posttest": "npm run --silent security",
+		"tests-only": "es-shim-api --bound && npm run --silent test:shimmed && npm run --silent test:module && npm run --silent tests:es5",
+		"tests:es5": "npm run --silent test:promise-shimmed",
+		"test:shimmed": "node test/shimmed.js",
+		"test:module": "node test/index.js",
+		"test:promise-shimmed": "node test/promise-shimmed.js",
 		"coverage": "covert test/*.js",
 		"coverage-quiet": "covert test/*.js --quiet",
 		"lint": "eslint test/*.js *.js",
@@ -49,8 +55,10 @@
 		"@es-shims/api": "^1.2.0",
 		"@ljharb/eslint-config": "^6.0.0",
 		"covert": "^1.1.0",
+		"es6-shim": "^0.35.1",
 		"eslint": "^3.0.1",
 		"nsp": "^2.5.0",
+		"tape": "^4.6.0"
 	},
 	"testling": {
 		"files": "test/index.js",
