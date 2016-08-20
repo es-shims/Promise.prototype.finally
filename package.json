@@ -1,0 +1,76 @@
+{
+	"name": "promise.prototype.finally",
+	"version": "1.0.1",
+	"author": "Jordan Harband",
+	"contributors": [
+		{
+			"name": "Matt Andrews",
+			"email": "matt@mattandre.ws"
+		},
+		{
+			"name": "Jordan Harband",
+			"email": "ljharb@gmail.com",
+			"url": "http://ljharb.codes"
+		}
+	],
+	"description": "ES Proposal spec-compliant shim for Promise.prototype.finally",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"pretest": "npm run --silent lint",
+		"posttest": "npm run --silent security",
+		"coverage": "covert test/*.js",
+		"coverage-quiet": "covert test/*.js --quiet",
+		"lint": "eslint test/*.js *.js",
+		"security": "nsp check"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/es-shims/Promise.prototype.finally.git"
+	},
+	"keywords": [
+		"Promise",
+		"promises",
+		"finally",
+		"promise.prototype.finally",
+		"ES7",
+		"ES8",
+		"ES2017",
+		"shim",
+		"polyfill",
+		"es-shim API"
+	],
+	"dependencies": {
+		"define-properties": "^1.1.2",
+		"es-abstract": "^1.6.0",
+		"function-bind": "^1.1.0"
+	},
+	"devDependencies": {
+		"@es-shims/api": "^1.2.0",
+		"@ljharb/eslint-config": "^6.0.0",
+		"covert": "^1.1.0",
+		"eslint": "^3.0.1",
+		"nsp": "^2.5.0",
+	},
+	"testling": {
+		"files": "test/index.js",
+		"browsers": [
+			"iexplore/9.0..latest",
+			"firefox/4.0..6.0",
+			"firefox/15.0..latest",
+			"firefox/nightly",
+			"chrome/4.0..10.0",
+			"chrome/20.0..latest",
+			"chrome/canary",
+			"opera/11.6..latest",
+			"opera/next",
+			"safari/5.0..latest",
+			"ipad/6.0..latest",
+			"iphone/6.0..latest",
+			"android-browser/4.2"
+		]
+	},
+	"engines": {
+		"node": ">= 0.4"
+	}
+}
