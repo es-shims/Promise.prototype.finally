@@ -2,8 +2,6 @@
 
 /* global Symbol */
 
-// var define = require('define-properties');
-
 // var hasSymbols = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol';
 
 module.exports = function (promiseFinally, t) {
@@ -11,7 +9,7 @@ module.exports = function (promiseFinally, t) {
 		return t.skip('No global Promise detected');
 	}
 
-	t.skip('onFinally arguments', function (st) {
+	t.test('onFinally arguments', function (st) {
 		st.plan(2);
 
 		promiseFinally(Promise.resolve(42), function () {
