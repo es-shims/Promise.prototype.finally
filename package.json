@@ -1,6 +1,6 @@
 {
 	"name": "promise.prototype.finally",
-	"version": "1.0.1",
+	"version": "2.0.0",
 	"author": "Jordan Harband",
 	"contributors": [
 		{
@@ -17,6 +17,7 @@
 	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
+		"prepublish": "safe-publish-latest",
 		"pretest": "npm run --silent lint",
 		"test": "npm run --silent tests-only",
 		"posttest": "npm run --silent security",
@@ -58,7 +59,8 @@
 		"es6-shim": "^0.35.1",
 		"eslint": "^3.0.1",
 		"nsp": "^2.5.0",
-		"tape": "^4.6.0"
+		"tape": "^4.6.0",
+		"safe-publish-latest": "^1.0.1"
 	},
 	"testling": {
 		"files": "test/index.js",
