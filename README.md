@@ -72,6 +72,9 @@ rejected.finally(function () {
 ## Tests
 Simply clone the repo, `npm install`, and run `npm test`
 
+## Thanks
+Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), who provided the npm package name for v2 of this module. v1 is both in [the original repo][v1-repo-url] and preserved in [a branch][v1-branch-url]
+
 [package-url]: https://npmjs.com/package/promise.prototype.finally
 [npm-version-svg]: http://versionbadg.es/es-shims/Promise.prototype.finally.svg
 [travis-svg]: https://travis-ci.org/es-shims/Promise.prototype.finally.svg
@@ -87,3 +90,5 @@ Simply clone the repo, `npm install`, and run `npm test`
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/promise.prototype.finally.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=promise.prototype.finally
+[v1-repo-url]: https://github.com/matthew-andrews/Promise.prototype.finally
+[v1-branch-url]: https://github.com/es-shims/Promise.prototype.finally/tree/v1
