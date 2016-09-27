@@ -1,3 +1,7 @@
+2.0.1 / 2016-09-27
+=================
+  * [Fix] functions in IE 9-11 don’t have a `name` property (#3)
+
 2.0.0 / 2016-08-21
 =================
   * Re-release.

@@ -61,10 +61,10 @@ env:
 matrix:
   fast_finish: true
   include:
-    - node_js: "node"
-      env: LINT=true
     - node_js: "0.10"
       env: ES5=true
+    - node_js: "node"
+      env: LINT=true
   allow_failures:
     - node_js: "6.5"
     - node_js: "6.4"
