@@ -38,8 +38,11 @@ var promiseFinally = function finally_(onFinally) {
 	C = ES.SpeciesConstructor(this, OriginalPromise); // may throw
 	return newPromise;
 };
-if (Object.getOwnPropertyDescriptor && Object.getOwnPropertyDescriptor(promiseFinally, 'name').configurable) {
-	Object.defineProperty(promiseFinally, 'name', { configurable: true, value: 'finally' });
+if (Object.getOwnPropertyDescriptor) {
+	var descriptor = Object.getOwnPropertyDescriptor(promiseFinally, 'name');
+	if (descriptor && descriptor.configurable) {
+		Object.defineProperty(promiseFinally, 'name', { configurable: true, value: 'finally' });
+	}
 }
 
 module.exports = promiseFinally;
