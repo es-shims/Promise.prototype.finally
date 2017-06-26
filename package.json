@@ -49,7 +49,7 @@
 	],
 	"dependencies": {
 		"define-properties": "^1.1.2",
-		"es-abstract": "^1.6.1",
+		"es-abstract": "^1.7.0",
 		"function-bind": "^1.1.0"
 	},
 	"devDependencies": {
