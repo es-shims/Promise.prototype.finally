@@ -7,37 +7,57 @@ requirePromise();
 var ES = require('es-abstract/es7');
 var bind = require('function-bind');
 
-var promiseTry = function getPromise(C, handler) {
+var promiseResolve = function PromiseResolve(C, value) {
 	return new C(function (resolve) {
-		resolve(handler());
+		resolve(value);
 	});
 };
 
 var OriginalPromise = Promise;
 
-var then = bind.call(Function.call, Promise.prototype.then);
+var createThenFinally = function CreateThenFinally(C, onFinally) {
+	return function (value) {
+		var result = onFinally();
+		var promise = promiseResolve(C, result);
+		var valueThunk = function () {
+			return value;
+		};
+		return promise.then(valueThunk);
+	};
+};
+
+var createCatchFinally = function CreateCatchFinally(C, onFinally) {
+	return function (reason) {
+		var result = onFinally();
+		var promise = promiseResolve(C, result);
+		var thrower = function () {
+			throw reason;
+		};
+		return promise.then(thrower);
+	};
+};
+
+var then = bind.call(Function.call, OriginalPromise.prototype.then);
 
 var promiseFinally = function finally_(onFinally) {
 	/* eslint no-invalid-this: 0 */
 
-	var handler = typeof onFinally === 'function' ? onFinally : function () {};
-	var C;
-	var newPromise = then(
-		this, // throw if IsPromise(this) is false
-		function (x) {
-			return then(promiseTry(C, handler), function () {
-				return x;
-			});
-		},
-		function (e) {
-			return then(promiseTry(C, handler), function () {
-				throw e;
-			});
-		}
-	);
-	C = ES.SpeciesConstructor(this, OriginalPromise); // may throw
-	return newPromise;
+	var promise = this;
+
+	then(promise); // throw if IsPromise(this) is false
+
+	var C = ES.SpeciesConstructor(promise, OriginalPromise); // may throw
+
+	var thenFinally = onFinally;
+	var catchFinally = onFinally;
+	if (ES.IsCallable(onFinally)) {
+		thenFinally = createThenFinally(C, onFinally);
+		catchFinally = createCatchFinally(C, onFinally);
+	}
+
+	return promise.then(thenFinally, catchFinally);
 };
+
 if (Object.getOwnPropertyDescriptor) {
 	var descriptor = Object.getOwnPropertyDescriptor(promiseFinally, 'name');
 	if (descriptor && descriptor.configurable) {
