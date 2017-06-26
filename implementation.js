@@ -7,7 +7,7 @@ requirePromise();
 var ES = require('es-abstract/es7');
 var bind = require('function-bind');
 
-var getPromise = function getPromise(C, handler) {
+var promiseTry = function getPromise(C, handler) {
 	return new C(function (resolve) {
 		resolve(handler());
 	});
@@ -25,12 +25,12 @@ var promiseFinally = function finally_(onFinally) {
 	var newPromise = then(
 		this, // throw if IsPromise(this) is false
 		function (x) {
-			return then(getPromise(C, handler), function () {
+			return then(promiseTry(C, handler), function () {
 				return x;
 			});
 		},
 		function (e) {
-			return then(getPromise(C, handler), function () {
+			return then(promiseTry(C, handler), function () {
 				throw e;
 			});
 		}
