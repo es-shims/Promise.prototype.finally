@@ -1,7 +1,8 @@
 {
 	"rules": {
+		"max-params": 0,
 		"max-nested-callbacks": [2, 3],
-		"max-statements": [2, 12],
+		"max-statements": 0,
 		"max-statements-per-line": [2, { "max": 2 }],
 		"no-invalid-this": [1],
 		"prefer-promise-reject-errors": 0,

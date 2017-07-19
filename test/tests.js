@@ -8,7 +8,7 @@ var assertArray = function (t, value, length, assertType) {
 	if (typeof assertType === 'function') {
 		for (var i = 0; i < value.length; i += 1) {
 			assertType(value[i]);
-		};
+		}
 	}
 };
 
@@ -98,7 +98,7 @@ module.exports = function (promiseFinally, t) {
 			Subclass.thenArgs.length = 0;
 
 			var original = Subclass.resolve();
-			var promise = promiseFinally(original, function () {});
+			promiseFinally(original, function () {});
 
 			assertArray(s2t, original.thenArgs, 1);
 			assertArray(s2t, Subclass.thenArgs, 1);
@@ -111,7 +111,7 @@ module.exports = function (promiseFinally, t) {
 
 			var original = Subclass.resolve();
 			var sentinel = {};
-			var promise = promiseFinally(original, sentinel);
+			promiseFinally(original, sentinel);
 
 			assertArray(s2t, original.thenArgs, 1, Array.isArray);
 			assertArray(s2t, Subclass.thenArgs, 1, Array.isArray);
@@ -127,7 +127,7 @@ module.exports = function (promiseFinally, t) {
 			var sentinel = {};
 			var original = Subclass.resolve(sentinel);
 			var onFinallyArgs = [];
-			var onFinally = function onFinally() {
+			var onFinally = function onFinallyHandler() {
 				onFinallyArgs.push(Array.prototype.slice.call(arguments));
 				return 42;
 			};
@@ -153,7 +153,7 @@ module.exports = function (promiseFinally, t) {
 					s3t.deepEqual(onFinallyArgs, [[]], 'onFinally called once with no args');
 					assertArray(s3t, Subclass.thenArgs, 9);
 					s3t.end();
-				}).catch(s3t.fail);
+				})['catch'](s3t.fail);
 			});
 
 			s2t.test('catchFinally works as expected', function (s3t) {
@@ -161,7 +161,7 @@ module.exports = function (promiseFinally, t) {
 
 				s3t.plan(17);
 				var thrown = { toString: function () { return 'thrown object'; } };
-				var onFinallyRejects = function onFinallyRejects() {
+				var onFinallyRejects = function onFinallyThrower() {
 					onFinally.apply(undefined, arguments);
 					throw thrown;
 				};
@@ -176,9 +176,9 @@ module.exports = function (promiseFinally, t) {
 					s3t.deepEqual(onFinallyArgs, [[]], 'onFinally called once with no args');
 
 					assertArray(s3t, Subclass.thenArgs, 3);
-						// 1) initial call with thenFinally/catchFinally
-						// 2) rejectedPromise.then call
-						// 3) rejectedPromise.then -> onFinally call
+					// 1) initial call with thenFinally/catchFinally
+					// 2) rejectedPromise.then call
+					// 3) rejectedPromise.then -> onFinally call
 					assertArray(s3t, Subclass.thenArgs[0], 2, function (x) { s3t.equal(typeof x, 'function'); });
 
 					assertArray(s3t, Subclass.thenArgs[1], 2);
@@ -191,7 +191,7 @@ module.exports = function (promiseFinally, t) {
 					s3t.end();
 				};
 
-				rejectedPromise.then(s3t.fail, rejectedPromiseCatch).catch(s3t.fail);
+				rejectedPromise.then(s3t.fail, rejectedPromiseCatch)['catch'](s3t.fail);
 			});
 
 			s2t.end();
