@@ -1,3 +1,11 @@
+3.0.0 / 2017-07-25
+=================
+  * [Breaking] update implementation to follow the new spec (#9)
+  * [Deps] update `es-abstract`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `es6-shim`, `nsp`, `safe-publish-latest`, `tape`
+  * [Tests] up to `node` `v8.1`, `v7.10`, `v6.11`, `v4.8`; improve matrix
+  * [Tests] fix 0.10; remove 0.8
+
 2.0.1 / 2016-09-27
 =================
   * [Fix] functions in IE 9-11 don’t have a `name` property (#3)
