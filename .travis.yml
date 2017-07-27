@@ -22,6 +22,7 @@ script:
   - 'if [ -n "${COVERAGE-}" ]; then npm run coverage ; fi'
   - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
   - 'if [ -n "${ES5-}" ]; then npm run tests:es5 ; fi'
+  - 'if [ -n "${NATIVE-}" ]; then npm run test:native ; fi'
 sudo: false
 env:
   - TEST=true
@@ -34,6 +35,8 @@ matrix:
       env: POSTTEST=true
     - node_js: "0.10"
       env: ES5=true
+    - node_js: "8"
+      env: NATIVE=true ALLOW_FAILURE=true
     - node_js: "8.0"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "7.9"
@@ -161,3 +164,4 @@ matrix:
   allow_failures:
     - os: osx
     - env: TEST=true ALLOW_FAILURE=true
+    - env: NATIVE=true ALLOW_FAILURE=true
