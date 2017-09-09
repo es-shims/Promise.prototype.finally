@@ -81,6 +81,8 @@ module.exports = function (promiseFinally, t) {
 			s2t.ok(promise instanceof Subclass, 'promise is instanceof Subclass');
 			s2t.equal(promise.constructor, Subclass, 'promise.constructor is Subclass');
 
+			promise['catch'](function () {}); // avoid unhandled rejection warning
+
 			s2t.end();
 		});
 
