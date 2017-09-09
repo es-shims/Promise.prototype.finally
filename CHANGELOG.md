@@ -1,3 +1,12 @@
+3.0.1 / 2017-09-09
+=================
+  * [Fix] ensure that the “then” brand check doesn’t cause an unhandled rejection warning (#10)
+  * [Deps] update `es-abstract`, `function-bind`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `nsp`, `tape`, `@es-shims/api`
+  * [Tests] up to `node` `v8.4`; use `nvm install-latest-npm` so new `npm` doesn’t break old `node`; add 0.8
+  * [Tests] restore ES5 tests
+  * [Tests] refactor to allow for unshimmed tests
+
 3.0.0 / 2017-07-25
 =================
   * [Breaking] update implementation to follow the new spec (#9)
