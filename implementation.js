@@ -44,7 +44,7 @@ var promiseFinally = function finally_(onFinally) {
 
 	var promise = this;
 
-	then(then(promise), null, function () {}); // throw if IsPromise(this) is false; catch() to avoid unhandled rejection warnings
+	then(promise, null, function () {}); // throw if IsPromise(this) is false; catch() to avoid unhandled rejection warnings
 
 	var C = ES.SpeciesConstructor(promise, OriginalPromise); // may throw
 
