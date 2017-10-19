@@ -5,6 +5,7 @@
 [![dev dependency status][dev-deps-svg]][dev-deps-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
+[![jsDelivr Hits][jsdelivr-image]][jsdelivr-url]
 
 [![npm badge][npm-badge-png]][package-url]
 
@@ -92,3 +93,5 @@ Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), wh
 [downloads-url]: http://npm-stat.com/charts.html?package=promise.prototype.finally
 [v1-repo-url]: https://github.com/matthew-andrews/Promise.prototype.finally
 [v1-branch-url]: https://github.com/es-shims/Promise.prototype.finally/tree/v1
+[jsdelivr-image]: https://data.jsdelivr.com/v1/package/npm/promise.prototype.finally/badge?style=rounded
+[jsdelivr-url]: (https://www.jsdelivr.com/package/npm/promise.prototype.finally
