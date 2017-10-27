@@ -58,8 +58,8 @@
 		"@ljharb/eslint-config": "^12.2.1",
 		"covert": "^1.1.0",
 		"es6-shim": "^0.35.3",
-		"eslint": "^4.6.1",
-		"nsp": "^2.8.0",
+		"eslint": "^4.9.0",
+		"nsp": "^2.8.1",
 		"safe-publish-latest": "^1.1.1",
 		"tape": "^4.8.0"
 	},
