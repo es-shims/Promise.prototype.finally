@@ -50,7 +50,7 @@
 	],
 	"dependencies": {
 		"define-properties": "^1.1.2",
-		"es-abstract": "^1.8.2",
+		"es-abstract": "^1.9.0",
 		"function-bind": "^1.1.1"
 	},
 	"devDependencies": {
