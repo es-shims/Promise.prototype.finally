@@ -1,3 +1,10 @@
+3.1.0 / 2017-10-26
+=================
+  * [New] Add auto shim file, allowing clean 'import' (#12)
+  * [Refactor] only call `Promise#then` for a brand check once, instead of twice.
+  * [Deps] update `es-abstract`
+  * [Dev Deps] update `eslint`, `nsp`
+
 3.0.1 / 2017-09-09
 =================
   * [Fix] ensure that the “then” brand check doesn’t cause an unhandled rejection warning (#10)
