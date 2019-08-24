@@ -9,7 +9,7 @@
 
 	"rules": {
 		"dot-notation": [2, { "allowKeywords": false }],
-		"new-cap": [2, { "capIsNewExceptions": ["RequireObjectCoercible", "SpeciesConstructor", "IsCallable"] }],
+		"new-cap": [2, { "capIsNewExceptions": ["RequireObjectCoercible", "SpeciesConstructor", "IsCallable", "Type"] }],
 		"no-magic-numbers": 0,
 	},
 

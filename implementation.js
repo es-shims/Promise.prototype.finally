@@ -4,8 +4,7 @@ var requirePromise = require('./requirePromise');
 
 requirePromise();
 
-var ES = require('es-abstract/es7');
-var bind = require('function-bind');
+var ES = require('es-abstract/es2018');
 
 var promiseResolve = function PromiseResolve(C, value) {
 	return new C(function (resolve) {
@@ -37,14 +36,14 @@ var createCatchFinally = function CreateCatchFinally(C, onFinally) {
 	};
 };
 
-var then = bind.call(Function.call, OriginalPromise.prototype.then);
-
 var promiseFinally = function finally_(onFinally) {
 	/* eslint no-invalid-this: 0 */
 
 	var promise = this;
 
-	then(promise, null, function () {}); // throw if IsPromise(this) is false; catch() to avoid unhandled rejection warnings
+	if (ES.Type(promise) !== 'Object') {
+		throw new TypeError('receiver is not an Object');
+	}
 
 	var C = ES.SpeciesConstructor(promise, OriginalPromise); // may throw
 
