@@ -15,6 +15,21 @@ module.exports = function (promiseFinally, t) {
 		return t.skip('No global Promise detected');
 	}
 
+	t.test('non-Promises', function (st) {
+		var sentinel = {};
+		var onFulfill = function () {};
+		var onReject = function () {};
+		var results = promiseFinally(
+			{ then: function () { return [sentinel].concat(Array.prototype.slice.call(arguments)); } },
+			onFulfill,
+			onReject
+		);
+		st.equal(results[0], sentinel, 'a receiver with a custom `then` has its return value returned immediately');
+		st.equal(typeof results[1], 'function', 'a receiver with a custom `then` gets the right arguments');
+		st.equal(typeof results[2], 'function', 'a receiver with a custom `then` gets the right arguments');
+		st.end();
+	});
+
 	t.test('onFinally arguments', function (st) {
 		st.plan(2);
 
