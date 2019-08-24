@@ -20,7 +20,7 @@
 		"prepublish": "safe-publish-latest",
 		"pretest": "npm run --silent lint",
 		"test": "npm run --silent tests-only",
-		"posttest": "npm run --silent security",
+		"posttest": "npx aud --production",
 		"tests-only": "es-shim-api --bound && npm run --silent test:shimmed && npm run --silent test:module && npm run --silent tests:es5",
 		"tests:es5": "npm run --silent test:promise-shimmed",
 		"test:shimmed": "node test/shimmed.js",
@@ -29,8 +29,7 @@
 		"test:native": "node --harmony-promise-finally test/native",
 		"coverage": "covert test/*.js",
 		"coverage-quiet": "covert test/*.js --quiet",
-		"lint": "eslint test/*.js *.js",
-		"security": "nsp check"
+		"lint": "eslint test/*.js *.js"
 	},
 	"repository": {
 		"type": "git",
@@ -59,7 +58,6 @@
 		"covert": "^1.1.0",
 		"es6-shim": "^0.35.3",
 		"eslint": "^4.9.0",
-		"nsp": "^2.8.1",
 		"safe-publish-latest": "^1.1.1",
 		"tape": "^4.8.0"
 	},
