@@ -1,3 +1,12 @@
+3.1.1 / 2019-08-25
+=================
+  * [Fix] `finally` receiver must only be an Object, not a Promise
+  * [Deps] update `define-properties`, `es-abstract`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, `covert`, `es6-shim`, `safe-publish-latest`, `tape`
+  * [Tests] up to `node` `v12.9`, `v11.15`, `v10.16`, `v9.11`, `v8.16`, `v6.17`, `v4.9`
+  * [Tests] add test for non-Promise receiver
+  * [Tests] use `npx aud` instead of `nsp` or `npm audit` with hoops
+
 3.1.0 / 2017-10-26
 =================
   * [New] Add auto shim file, allowing clean 'import' (#12)

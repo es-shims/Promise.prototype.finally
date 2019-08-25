@@ -1,6 +1,6 @@
 {
 	"name": "promise.prototype.finally",
-	"version": "3.1.0",
+	"version": "3.1.1",
 	"author": "Jordan Harband",
 	"contributors": [
 		{
@@ -29,7 +29,7 @@
 		"test:native": "node --harmony-promise-finally test/native",
 		"coverage": "covert test/*.js",
 		"coverage-quiet": "covert test/*.js --quiet",
-		"lint": "eslint test/*.js *.js"
+		"lint": "eslint ."
 	},
 	"repository": {
 		"type": "git",
