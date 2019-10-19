@@ -54,10 +54,10 @@
 	},
 	"devDependencies": {
 		"@es-shims/api": "^2.1.2",
-		"@ljharb/eslint-config": "^14.0.2",
+		"@ljharb/eslint-config": "^14.1.0",
 		"covert": "^1.1.1",
 		"es6-shim": "^0.35.5",
-		"eslint": "^6.2.2",
+		"eslint": "^6.5.1",
 		"safe-publish-latest": "^1.1.3",
 		"tape": "^4.11.0"
 	},
