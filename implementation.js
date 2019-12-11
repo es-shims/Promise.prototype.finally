@@ -4,7 +4,9 @@ var requirePromise = require('./requirePromise');
 
 requirePromise();
 
-var ES = require('es-abstract/es2018');
+var IsCallable = require('es-abstract/2018/IsCallable');
+var SpeciesConstructor = require('es-abstract/2018/SpeciesConstructor');
+var Type = require('es-abstract/2018/Type');
 
 var promiseResolve = function PromiseResolve(C, value) {
 	return new C(function (resolve) {
@@ -41,15 +43,15 @@ var promiseFinally = function finally_(onFinally) {
 
 	var promise = this;
 
-	if (ES.Type(promise) !== 'Object') {
+	if (Type(promise) !== 'Object') {
 		throw new TypeError('receiver is not an Object');
 	}
 
-	var C = ES.SpeciesConstructor(promise, OriginalPromise); // may throw
+	var C = SpeciesConstructor(promise, OriginalPromise); // may throw
 
 	var thenFinally = onFinally;
 	var catchFinally = onFinally;
-	if (ES.IsCallable(onFinally)) {
+	if (IsCallable(onFinally)) {
 		thenFinally = createThenFinally(C, onFinally);
 		catchFinally = createCatchFinally(C, onFinally);
 	}
