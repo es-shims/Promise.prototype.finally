@@ -1,3 +1,13 @@
+3.1.2 / 2019-12-11
+=================
+  * [Refactor] use split-up `es-abstract`
+  * [Deps] update `es-abstract`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `safe-publish-latest`
+  * [Tests] up to `node` `v12.12`
+  * [Tests] use shared travis-ci configs
+  * [meta] add `funding` field
+  * [actions] add automatic rebasing / merge commit blocking
+
 3.1.1 / 2019-08-25
 =================
   * [Fix] `finally` receiver must only be an Object, not a Promise
