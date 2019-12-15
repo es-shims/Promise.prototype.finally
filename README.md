@@ -1,10 +1,12 @@
 # promise.prototype.finally <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
+
 [![Build Status][travis-svg]][travis-url]
 [![dependency status][deps-svg]][deps-url]
 [![dev dependency status][dev-deps-svg]][dev-deps-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
+[![Greenkeeper][greenkeeper-image]][greenkeeper-url]
 
 [![npm badge][npm-badge-png]][package-url]
 
@@ -92,3 +94,5 @@ Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), wh
 [downloads-url]: http://npm-stat.com/charts.html?package=promise.prototype.finally
 [v1-repo-url]: https://github.com/matthew-andrews/Promise.prototype.finally
 [v1-branch-url]: https://github.com/es-shims/Promise.prototype.finally/tree/v1
+[greenkeeper-image]: https://badges.greenkeeper.io/es-shims/Promise.prototype.finally.svg
+[greenkeeper-url]: https://greenkeeper.io/
