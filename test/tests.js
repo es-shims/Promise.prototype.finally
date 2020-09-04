@@ -73,7 +73,7 @@ module.exports = function (promiseFinally, t) {
 	var Subclass = (function () {
 		try {
 			// eslint-disable-next-line no-new-func
-			return Function('class Subclass extends Promise { constructor(...args) { super(...args); this.thenArgs = []; } then(...args) { Subclass.thenArgs.push(args); this.thenArgs.push(args); return super.then(...args); } } Subclass.thenArgs = []; return Subclass;')();
+			return Function('class Subclass extends Promise { constructor(...args) { super(...args); this.thenArgs = []; } then(...args) { Subclass.thenArgs.push({ promise: this, args: args }); this.thenArgs.push({ promise: this, args: args }); return super.then(...args); } } Subclass.thenArgs = []; return Subclass;')();
 		} catch (e) { /**/ }
 
 		return false;
@@ -128,10 +128,10 @@ module.exports = function (promiseFinally, t) {
 			var sentinel = {};
 			promiseFinally(original, sentinel);
 
-			assertArray(s2t, original.thenArgs, 1, Array.isArray);
-			assertArray(s2t, Subclass.thenArgs, 1, Array.isArray);
+			assertArray(s2t, original.thenArgs, 1, function (x) { s2t.ok(Array.isArray(x.args)); });
+			assertArray(s2t, Subclass.thenArgs, 1, function (x) { s2t.ok(Array.isArray(x.args)); });
 
-			assertArray(s2t, original.thenArgs[0], 2, function (x) { s2t.equal(x, sentinel); });
+			assertArray(s2t, original.thenArgs[0].args, 2, function (x) { s2t.equal(x, sentinel); });
 
 			s2t.end();
 		});
@@ -148,11 +148,11 @@ module.exports = function (promiseFinally, t) {
 			};
 			var promise = promiseFinally(original, onFinally);
 
-			assertArray(s2t, original.thenArgs, 1, Array.isArray);
-			assertArray(s2t, Subclass.thenArgs, 1, Array.isArray);
+			assertArray(s2t, original.thenArgs, 1, function (x) { s2t.ok(Array.isArray(x.args)); });
+			assertArray(s2t, Subclass.thenArgs, 1, function (x) { s2t.ok(Array.isArray(x.args)); });
 
 			var thenArgs = original.thenArgs[0];
-			assertArray(s2t, thenArgs, 2, function (x) { s2t.equal(typeof x, 'function'); });
+			assertArray(s2t, thenArgs.args, 2, function (x) { s2t.equal(typeof x, 'function'); });
 
 			s2t.deepEqual(onFinallyArgs, [], 'onFinally not yet called');
 
@@ -194,14 +194,14 @@ module.exports = function (promiseFinally, t) {
 					// 1) initial call with thenFinally/catchFinally
 					// 2) rejectedPromise.then call
 					// 3) rejectedPromise.then -> onFinally call
-					assertArray(s3t, Subclass.thenArgs[0], 2, function (x) { s3t.equal(typeof x, 'function'); });
+					assertArray(s3t, Subclass.thenArgs[0].args, 2, function (x) { s3t.equal(typeof x, 'function'); });
 
-					assertArray(s3t, Subclass.thenArgs[1], 2);
-					s3t.deepEqual(Subclass.thenArgs[1], [s3t.fail, rejectedPromiseCatch], 'rejectedPromise.then call args');
+					assertArray(s3t, Subclass.thenArgs[1].args, 2);
+					s3t.deepEqual(Subclass.thenArgs[1].args, [s3t.fail, rejectedPromiseCatch], 'rejectedPromise.then call args');
 
-					assertArray(s3t, Subclass.thenArgs[2], 2);
-					s3t.equal(Subclass.thenArgs[2][0], undefined, 'final .then call gets no onFulfill');
-					s3t.equal(typeof Subclass.thenArgs[2][1], 'function', 'final .then call gets an onReject');
+					assertArray(s3t, Subclass.thenArgs[2].args, 2);
+					s3t.equal(Subclass.thenArgs[2].args[0], undefined, 'final .then call gets no onFulfill');
+					s3t.equal(typeof Subclass.thenArgs[2].args[1], 'function', 'final .then call gets an onReject');
 
 					s3t.end();
 				};
