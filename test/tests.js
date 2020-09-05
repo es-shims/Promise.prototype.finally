@@ -1,5 +1,7 @@
 'use strict';
 
+var semver = require('semver');
+
 var assertArray = function (t, value, length, assertType) {
 	t.ok(Array.isArray(value), 'value is an array');
 	t.equal(value.length, length, 'length is ' + length);
@@ -212,42 +214,44 @@ module.exports = function (promiseFinally, t) {
 			s2t.end();
 		});
 
-		var mp1Value = {};
-		var mp1 = Subclass.resolve(mp1Value);
-		var mp2 = Subclass.resolve(42);
-		var mp3 = Subclass.reject(mp1Value);
-		var mp4 = Subclass.reject(42);
+		st.test('observable then calls', { skip: semver.satisfies(process.version, '^6 || ^7 || ^8 || ^9') }, function (s2t) {
+			var mp1Value = {};
+			var mp1 = Subclass.resolve(mp1Value);
+			var mp2 = Subclass.resolve(42);
+			var mp3 = Subclass.reject(mp1Value);
+			var mp4 = Subclass.reject(42);
 
-		st.test('resolved observable then calls', function (s2t) {
-			var orig = Subclass.thenArgs.length;
-			s2t.plan(6);
-			return promiseFinally(mp1, function () { return mp2; }).then(function () {
-				assertArray(s2t, Subclass.thenArgs, orig + 5);
+			s2t.test('resolved observable then calls', function (s3t) {
+				var orig = Subclass.thenArgs.length;
+				s3t.plan(6);
+				return promiseFinally(mp1, function () { return mp2; }).then(function () {
+					assertArray(s3t, Subclass.thenArgs, orig + 5);
 
-				var mp2Calls = Subclass.thenArgs.filter(function (c) { return c.promise === mp2; });
-				assertArray(s2t, mp2Calls, 1);
-				s2t.equal(mp2Calls[0].args[1], undefined, '`reject` is undefined');
-				s2t.equal(mp2Calls[0].args[0](), mp1Value, '`resolve` produces `mp1Value`');
+					var mp2Calls = Subclass.thenArgs.filter(function (c) { return c.promise === mp2; });
+					assertArray(s3t, mp2Calls, 1);
+					s3t.equal(mp2Calls[0].args[1], undefined, '`reject` is undefined');
+					s3t.equal(mp2Calls[0].args[0](), mp1Value, '`resolve` produces `mp1Value`');
+				});
 			});
-		});
 
-		st.test('rejected observable then calls', function (s2t) {
-			var orig = Subclass.thenArgs.length;
-			s2t.plan(7);
-			return promiseFinally(mp3, function () { return mp4; }).then(s2t.fail, function () {
-				assertArray(s2t, Subclass.thenArgs, orig + 5);
+			s2t.test('rejected observable then calls', function (s3t) {
+				var orig = Subclass.thenArgs.length;
+				s3t.plan(7);
+				return promiseFinally(mp3, function () { return mp4; }).then(s3t.fail, function () {
+					assertArray(s3t, Subclass.thenArgs, orig + 5);
 
-				var mp4Calls = Subclass.thenArgs.filter(function (c) { return c.promise === mp4; });
-				assertArray(s2t, mp4Calls, 1);
-				s2t.equal(mp4Calls[0].args[1], undefined, '`reject` is undefined');
-				var thrown = false;
-				try {
-					mp4Calls[0].args[0]();
-				} catch (error) {
-					thrown = true;
-					s2t.equal(error, mp1Value, 'rejects to `mp1Value`');
-				}
-				s2t.ok(thrown, 'threw an error');
+					var mp4Calls = Subclass.thenArgs.filter(function (c) { return c.promise === mp4; });
+					assertArray(s3t, mp4Calls, 1);
+					s3t.equal(mp4Calls[0].args[1], undefined, '`reject` is undefined');
+					var thrown = false;
+					try {
+						mp4Calls[0].args[0]();
+					} catch (error) {
+						thrown = true;
+						s3t.equal(error, mp1Value, 'rejects to `mp1Value`');
+					}
+					s3t.ok(thrown, 'threw an error');
+				});
 			});
 		});
 	});

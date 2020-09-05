@@ -63,6 +63,7 @@
 		"es6-shim": "^0.35.5",
 		"eslint": "^7.8.1",
 		"safe-publish-latest": "^1.1.4",
+		"semver": "^6.3.0",
 		"tape": "^5.0.1"
 	},
 	"testling": {
