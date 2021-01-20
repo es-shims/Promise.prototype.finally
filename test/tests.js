@@ -31,15 +31,15 @@ module.exports = function (promiseFinally, t) {
 	});
 
 	t.test('onFinally arguments', function (st) {
-		st.plan(2);
+		st.plan(4);
 
 		promiseFinally(Promise.resolve(42), function () {
 			st.equal(arguments.length, 0, 'resolved promise passes no arguments to onFinally');
-		})['catch'](st.fail);
+		}).then(st.pass, st.fail);
 
 		promiseFinally(Promise.reject(NaN), function () {
 			st.equal(arguments.length, 0, 'rejected promise passes no arguments to onFinally');
-		}).then(st.fail);
+		}).then(st.fail, st.pass);
 	});
 
 	t.test('onFinally fulfillment', function (st) {
@@ -220,6 +220,8 @@ module.exports = function (promiseFinally, t) {
 			var mp2 = Subclass.resolve(42);
 			var mp3 = Subclass.reject(mp1Value);
 			var mp4 = Subclass.reject(42);
+			mp3['catch'](function () {}); // avoid unhandled rejection warning
+			mp4['catch'](function () {}); // avoid unhandled rejection warning
 
 			s2t.test('resolved observable then calls', { todo: true }, function (s3t) {
 				var orig = Subclass.thenArgs.length;

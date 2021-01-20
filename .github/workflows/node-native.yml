@@ -1,0 +1,40 @@
+name: 'Tests: node.js: native'
+
+on: [pull_request, push]
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      latest: ${{ steps.set-matrix.outputs.requireds }}
+      minors: ${{ steps.set-matrix.outputs.optionals }}
+    steps:
+      - uses: ljharb/actions/node/matrix@main
+        id: set-matrix
+        with:
+          type: majors
+          preset: '>=10'
+
+  majors:
+    needs: [matrix]
+    name: 'majors, native tests'
+    continue-on-error: true
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix: ${{ fromJson(needs.matrix.outputs.latest) }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ljharb/actions/node/run@main
+        name: 'npm install && npm run test:native'
+        with:
+          node-version: ${{ matrix.node-version }}
+          command: 'test:native'
+
+  node:
+    name: 'node, native tests'
+    needs: [majors]
+    runs-on: ubuntu-latest
+    steps:
+      - run: 'echo tests completed'

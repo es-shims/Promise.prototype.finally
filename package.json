@@ -26,7 +26,7 @@
 		"posttest": "npx aud --production",
 		"tests-only": "nyc tape test/{implementation,index,shimmed}.js",
 		"test:promise-shimmed": "nyc node test/promise-shimmed",
-		"test:native": "nyc node --harmony-promise-finally test/native",
+		"test:native": "nyc node test/native",
 		"lint": "eslint .",
 		"postlint": "es-shim-api --bound"
 	},
