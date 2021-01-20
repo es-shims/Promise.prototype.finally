@@ -1,7 +1,5 @@
 'use strict';
 
-var semver = require('semver');
-
 var assertArray = function (t, value, length, assertType) {
 	t.ok(Array.isArray(value), 'value is an array');
 	t.equal(value.length, length, 'length is ' + length);
@@ -193,9 +191,11 @@ module.exports = function (promiseFinally, t) {
 					s3t.deepEqual(onFinallyArgs, [[]], 'onFinally called once with no args');
 
 					assertArray(s3t, Subclass.thenArgs, 3);
-					// 1) initial call with thenFinally/catchFinally
-					// 2) rejectedPromise.then call
-					// 3) rejectedPromise.then -> onFinally call
+					/*
+					 * 1) initial call with thenFinally/catchFinally
+					 * 2) rejectedPromise.then call
+					 * 3) rejectedPromise.then -> onFinally call
+					 */
 					assertArray(s3t, Subclass.thenArgs[0].args, 2, function (x) { s3t.equal(typeof x, 'function'); });
 
 					assertArray(s3t, Subclass.thenArgs[1].args, 2);
@@ -214,14 +214,14 @@ module.exports = function (promiseFinally, t) {
 			s2t.end();
 		});
 
-		st.test('observable then calls', { skip: semver.satisfies(process.version, '^6 || ^7 || ^8 || ^9') }, function (s2t) {
+		st.test('observable then calls', { todo: true }, function (s2t) {
 			var mp1Value = {};
 			var mp1 = Subclass.resolve(mp1Value);
 			var mp2 = Subclass.resolve(42);
 			var mp3 = Subclass.reject(mp1Value);
 			var mp4 = Subclass.reject(42);
 
-			s2t.test('resolved observable then calls', function (s3t) {
+			s2t.test('resolved observable then calls', { todo: true }, function (s3t) {
 				var orig = Subclass.thenArgs.length;
 				s3t.plan(6);
 				return promiseFinally(mp1, function () { return mp2; }).then(function () {
@@ -234,7 +234,7 @@ module.exports = function (promiseFinally, t) {
 				});
 			});
 
-			s2t.test('rejected observable then calls', function (s3t) {
+			s2t.test('rejected observable then calls', { todo: true }, function (s3t) {
 				var orig = Subclass.thenArgs.length;
 				s3t.plan(7);
 				return promiseFinally(mp3, function () { return mp4; }).then(s3t.fail, function () {
