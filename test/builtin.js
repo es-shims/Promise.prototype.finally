@@ -1,7 +1,7 @@
 'use strict';
 
 var defineProperties = require('define-properties');
-var bind = require('function-bind');
+var callBind = require('call-bind');
 var isEnumerable = Object.prototype.propertyIsEnumerable;
 var functionsHaveNames = function f() {}.name === 'f';
 var fnNamesConfigurable = functionsHaveNames && Object.getOwnPropertyDescriptor && Object.getOwnPropertyDescriptor(function f() {}, 'name').configurable;
@@ -28,5 +28,5 @@ module.exports = function (t) {
 		st.end();
 	});
 
-	runTests(bind.call(Function.call, Promise.prototype['finally']), t);
+	runTests(callBind(Promise.prototype['finally']), t);
 };
