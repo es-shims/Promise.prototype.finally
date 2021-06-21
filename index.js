@@ -1,6 +1,6 @@
 'use strict';
 
-var bind = require('call-bind');
+var callBind = require('call-bind');
 var define = require('define-properties');
 
 var implementation = require('./implementation');
