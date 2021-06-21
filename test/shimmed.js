@@ -1,7 +1,6 @@
 'use strict';
 
-var promiseFinally = require('../');
-promiseFinally.shim();
+require('../auto');
 
 var test = require('tape');
 
