@@ -1,3 +1,20 @@
+3.1.3 / 2021-10-04
+=================
+  * [Refactor] update `es-abstract`; use `call-bind` instead of `function-bind`
+  * [Deps] update `es-abstract`
+  * [readme] add github actions/codecov badges
+  * [meta] remove unneeded token; update checkout action
+  * [actions] use `node/install` instead of `node/run`; use `codecov` action
+  * [actions] add Require Allow Edits workflow
+  * [actions] switch Automatic Rebase workflow to `pull_request_target` event
+  * [Tests] increase coverage
+  * [Tests] migrate tests to Github Actions (#29)
+  * [Tests] run `nyc` on all tests; use `tape` runner; add implementation tests; mark failing impl tests as TODO
+  * [Tests] skip "observable calls" tests in node 6-9
+  * [Tests] add passing tests from https://github.com/tc39/test262/pull/2752
+  * [Tests] refactor Subclass tests to capture receiver
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, `aud`, `es6-shim`, `tape`
+
 3.1.2 / 2019-12-11
 =================
   * [Refactor] use split-up `es-abstract`
