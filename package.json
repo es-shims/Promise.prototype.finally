@@ -52,14 +52,14 @@
 		"es-abstract": "^1.18.3"
 	},
 	"devDependencies": {
-		"@es-shims/api": "^2.1.2",
-		"@ljharb/eslint-config": "^17.6.0",
+		"@es-shims/api": "^2.2.2",
+		"@ljharb/eslint-config": "^18.0.0",
 		"aud": "^1.1.5",
 		"es6-shim": "^0.35.6",
-		"eslint": "^7.29.0",
+		"eslint": "^7.32.0",
 		"nyc": "^10.3.2",
 		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.2.2"
+		"tape": "^5.3.1"
 	},
 	"testling": {
 		"files": "test/index.js",
