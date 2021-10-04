@@ -4,9 +4,9 @@ var requirePromise = require('./requirePromise');
 
 requirePromise();
 
-var IsCallable = require('es-abstract/2020/IsCallable');
-var SpeciesConstructor = require('es-abstract/2020/SpeciesConstructor');
-var Type = require('es-abstract/2020/Type');
+var IsCallable = require('es-abstract/2021/IsCallable');
+var SpeciesConstructor = require('es-abstract/2021/SpeciesConstructor');
+var Type = require('es-abstract/2021/Type');
 
 var promiseResolve = function PromiseResolve(C, value) {
 	return new C(function (resolve) {
