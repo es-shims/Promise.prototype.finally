@@ -1,16 +1,13 @@
 # promise.prototype.finally <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
-
-[![Build Status][travis-svg]][travis-url]
+[![github actions][actions-image]][actions-url]
+[![coverage][codecov-image]][codecov-url]
 [![dependency status][deps-svg]][deps-url]
 [![dev dependency status][dev-deps-svg]][dev-deps-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
-[![Greenkeeper][greenkeeper-image]][greenkeeper-url]
 
 [![npm badge][npm-badge-png]][package-url]
-
-[![browser support][testling-svg]][testling-url]
 
 ES Proposal spec-compliant shim for Promise.prototype.finally. Invoke its "shim" method to shim `Promise.prototype.finally` if it is unavailable or noncompliant. **Note**: a global `Promise` must already exist: the [es6-shim](https://github.com/es-shims/es6-shim) is recommended.
 
@@ -79,8 +76,6 @@ Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), wh
 
 [package-url]: https://npmjs.com/package/promise.prototype.finally
 [npm-version-svg]: http://versionbadg.es/es-shims/Promise.prototype.finally.svg
-[travis-svg]: https://travis-ci.org/es-shims/Promise.prototype.finally.svg
-[travis-url]: https://travis-ci.org/es-shims/Promise.prototype.finally
 [deps-svg]: https://david-dm.org/es-shims/Promise.prototype.finally.svg
 [deps-url]: https://david-dm.org/es-shims/Promise.prototype.finally
 [dev-deps-svg]: https://david-dm.org/es-shims/Promise.prototype.finally/dev-status.svg
@@ -94,5 +89,7 @@ Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), wh
 [downloads-url]: http://npm-stat.com/charts.html?package=promise.prototype.finally
 [v1-repo-url]: https://github.com/matthew-andrews/Promise.prototype.finally
 [v1-branch-url]: https://github.com/es-shims/Promise.prototype.finally/tree/v1
-[greenkeeper-image]: https://badges.greenkeeper.io/es-shims/Promise.prototype.finally.svg
-[greenkeeper-url]: https://greenkeeper.io/
+[codecov-image]: https://codecov.io/gh/es-shims/Promise.prototype.finally/branch/main/graphs/badge.svg
+[codecov-url]: https://app.codecov.io/gh/es-shims/Promise.prototype.finally/
+[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/es-shims/Promise.prototype.finally
+[actions-url]: https://github.com/es-shims/Promise.prototype.finally/actions
