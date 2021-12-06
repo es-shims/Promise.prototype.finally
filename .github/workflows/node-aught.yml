@@ -1,4 +1,4 @@
-name: 'Tests: node.js: native'
+name: 'Tests: node.js < 10'
 
 on: [pull_request, push]
 
@@ -6,13 +6,12 @@ jobs:
   tests:
     uses: ljharb/actions/.github/workflows/node.yml@main
     with:
-      range: '>= 10'
-      type: majors
-      continue-on-error: true
-      command: npm run test:native
+      range: '>= 0.11 < 10'
+      type: minors
+      command: npm run tests-only
 
   node:
-    name: 'node, native tests'
+    name: 'node < 10'
     needs: [tests]
     runs-on: ubuntu-latest
     steps:
