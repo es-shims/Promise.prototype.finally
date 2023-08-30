@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.5](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.4...v3.1.5) - 2023-08-30
+
+### Commits
+
+- [Deps] update `define-properties`, `es-abstract` [`2ff6ac3`](https://github.com/es-shims/Promise.prototype.finally/commit/2ff6ac356367e89eb555c50e3522e815d9d1bbbf)
+- [Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `es6-shim`, `tape` [`4cacca4`](https://github.com/es-shims/Promise.prototype.finally/commit/4cacca47298df952f4547c5d7cdad5226c6266b8)
+
 ## [v3.1.4](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.3...v3.1.4) - 2022-11-07
 
 ### Commits
