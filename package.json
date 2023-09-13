@@ -1,6 +1,6 @@
 {
 	"name": "promise.prototype.finally",
-	"version": "3.1.6",
+	"version": "3.1.7",
 	"author": "Jordan Harband <ljharb@gmail.com>",
 	"funding": {
 		"url": "https://github.com/sponsors/ljharb"

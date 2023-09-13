@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.7](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.6...v3.1.7) - 2023-09-13
+
+### Commits
+
+- [Deps] update `define-properties`, `set-function-name` [`01d3f17`](https://github.com/es-shims/Promise.prototype.finally/commit/01d3f17514abb9da154890c28e317bd3b3ccddfd)
+
+## [v3.1.6](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.5...v3.1.6) - 2023-09-13
+
+### Commits
+
+- [Refactor] use `set-function-name` [`903d207`](https://github.com/es-shims/Promise.prototype.finally/commit/903d2071f0fc8391ce69fa249915067d57a59332)
+- [actions] update checkout action [`594ef8e`](https://github.com/es-shims/Promise.prototype.finally/commit/594ef8ef4cb71189eb867cedeb6b201c7b2e27c2)
+
 ## [v3.1.5](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.4...v3.1.5) - 2023-08-30
 
 ### Commits
