@@ -4,22 +4,23 @@ var requirePromise = require('./requirePromise');
 
 requirePromise();
 
+var GetIntrinsic = require('get-intrinsic');
+
+var $TypeError = GetIntrinsic('%TypeError%');
+
+var PromiseResolve = require('es-abstract/2023/PromiseResolve');
 var IsCallable = require('es-abstract/2023/IsCallable');
 var SpeciesConstructor = require('es-abstract/2023/SpeciesConstructor');
 var Type = require('es-abstract/2023/Type');
 
-var promiseResolve = function PromiseResolve(C, value) {
-	return new C(function (resolve) {
-		resolve(value);
-	});
-};
+var setFunctionName = require('set-function-name');
 
 var OriginalPromise = Promise;
 
 var createThenFinally = function CreateThenFinally(C, onFinally) {
 	return function (value) {
 		var result = onFinally();
-		var promise = promiseResolve(C, result);
+		var promise = PromiseResolve(C, result);
 		var valueThunk = function () {
 			return value;
 		};
@@ -30,7 +31,7 @@ var createThenFinally = function CreateThenFinally(C, onFinally) {
 var createCatchFinally = function CreateCatchFinally(C, onFinally) {
 	return function (reason) {
 		var result = onFinally();
-		var promise = promiseResolve(C, result);
+		var promise = PromiseResolve(C, result);
 		var thrower = function () {
 			throw reason;
 		};
@@ -38,13 +39,13 @@ var createCatchFinally = function CreateCatchFinally(C, onFinally) {
 	};
 };
 
-var promiseFinally = function finally_(onFinally) {
-	/* eslint no-invalid-this: 0 */
+/* eslint no-invalid-this: 0 */
 
+module.exports = setFunctionName(function finally_(onFinally) {
 	var promise = this;
 
 	if (Type(promise) !== 'Object') {
-		throw new TypeError('receiver is not an Object');
+		throw new $TypeError('receiver is not an Object');
 	}
 
 	var C = SpeciesConstructor(promise, OriginalPromise); // may throw
@@ -57,13 +58,4 @@ var promiseFinally = function finally_(onFinally) {
 	}
 
 	return promise.then(thenFinally, catchFinally);
-};
-
-if (Object.getOwnPropertyDescriptor) {
-	var descriptor = Object.getOwnPropertyDescriptor(promiseFinally, 'name');
-	if (descriptor && descriptor.configurable) {
-		Object.defineProperty(promiseFinally, 'name', { configurable: true, value: 'finally' });
-	}
-}
-
-module.exports = promiseFinally;
+}, 'finally', true);

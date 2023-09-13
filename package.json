@@ -52,7 +52,9 @@
 	"dependencies": {
 		"call-bind": "^1.0.2",
 		"define-properties": "^1.2.0",
-		"es-abstract": "^1.22.1"
+		"es-abstract": "^1.22.1",
+		"get-intrinsic": "^1.2.1",
+		"set-function-name": "^2.0.0"
 	},
 	"devDependencies": {
 		"@es-shims/api": "^2.4.2",

@@ -4,7 +4,16 @@
 	"extends": "@ljharb",
 
 	"rules": {
-		"new-cap": [2, { "capIsNewExceptions": ["RequireObjectCoercible", "SpeciesConstructor", "IsCallable", "Type"] }],
+		"new-cap": [2, {
+			"capIsNewExceptions": [
+				"GetIntrinsic",
+				"IsCallable",
+				"PromiseResolve",
+				"RequireObjectCoercible",
+				"SpeciesConstructor",
+				"Type"
+			],
+		}],
 		"no-magic-numbers": 0,
 	},
 
