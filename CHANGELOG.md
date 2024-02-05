@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.8](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.7...v3.1.8) - 2024-02-04
+
+### Commits
+
+- [Refactor] use `es-errors` where possible, so things that only need those do not need `get-intrinsic` [`9f15e2a`](https://github.com/es-shims/Promise.prototype.finally/commit/9f15e2a679b1f3e16f5bf005bf62569896a68a65)
+- [Deps] update `call-bind`, `es-abstract`, `get-intrinsic` [`4dbd141`](https://github.com/es-shims/Promise.prototype.finally/commit/4dbd141a4eebbba1cc3c7b54a6059457bf9c06b6)
+- [Dev Deps] update `aud`, `tape` [`3661fdb`](https://github.com/es-shims/Promise.prototype.finally/commit/3661fdbd28000474d20a2135f8fcc7317b319c77)
+
 ## [v3.1.7](https://github.com/es-shims/Promise.prototype.finally/compare/v3.1.6...v3.1.7) - 2023-09-13
 
 ### Commits
