@@ -4,9 +4,7 @@ var requirePromise = require('./requirePromise');
 
 requirePromise();
 
-var GetIntrinsic = require('get-intrinsic');
-
-var $TypeError = GetIntrinsic('%TypeError%');
+var $TypeError = require('es-errors/type');
 
 var PromiseResolve = require('es-abstract/2023/PromiseResolve');
 var IsCallable = require('es-abstract/2023/IsCallable');

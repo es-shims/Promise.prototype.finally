@@ -6,7 +6,6 @@
 	"rules": {
 		"new-cap": [2, {
 			"capIsNewExceptions": [
-				"GetIntrinsic",
 				"IsCallable",
 				"PromiseResolve",
 				"RequireObjectCoercible",
