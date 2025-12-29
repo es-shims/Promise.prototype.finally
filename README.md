@@ -91,5 +91,5 @@ Huge thanks go out to [@matthew-andrews](https://github.com/matthew-andrews), wh
 [v1-branch-url]: https://github.com/es-shims/Promise.prototype.finally/tree/v1
 [codecov-image]: https://codecov.io/gh/es-shims/Promise.prototype.finally/branch/main/graphs/badge.svg
 [codecov-url]: https://app.codecov.io/gh/es-shims/Promise.prototype.finally/
-[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/es-shims/Promise.prototype.finally
+[actions-image]: https://img.shields.io/github/check-runs/es-shims/Promise.prototype.finally/main
 [actions-url]: https://github.com/es-shims/Promise.prototype.finally/actions
