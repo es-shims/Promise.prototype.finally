@@ -70,6 +70,18 @@ module.exports = function (promiseFinally, t) {
 		})['catch'](st.fail);
 	});
 
+	t.test('test262: test/built-ins/Promise/prototype/finally/species-constructor-throws', function (st) {
+		var p = Promise.resolve();
+		p.constructor = 0;
+		st['throws'](
+			function () { promiseFinally(p); },
+			TypeError,
+			'non-object constructor throws TypeError'
+		);
+
+		st.end();
+	});
+
 	var Subclass = (function () {
 		try {
 			// eslint-disable-next-line no-new-func
