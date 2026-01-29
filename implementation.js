@@ -6,10 +6,11 @@ requirePromise();
 
 var $TypeError = require('es-errors/type');
 
-var PromiseResolve = require('es-abstract/2023/PromiseResolve');
+var PromiseResolve = require('es-abstract/2025/PromiseResolve');
 var IsCallable = require('es-abstract/2023/IsCallable');
-var SpeciesConstructor = require('es-abstract/2023/SpeciesConstructor');
-var Type = require('es-abstract/2023/Type');
+var SpeciesConstructor = require('es-abstract/2025/SpeciesConstructor');
+
+var isObject = require('es-abstract/helpers/isObject');
 
 var setFunctionName = require('set-function-name');
 
@@ -42,7 +43,7 @@ var createCatchFinally = function CreateCatchFinally(C, onFinally) {
 module.exports = setFunctionName(function finally_(onFinally) {
 	var promise = this;
 
-	if (Type(promise) !== 'Object') {
+	if (!isObject(promise)) {
 		throw new $TypeError('receiver is not an Object');
 	}
 
